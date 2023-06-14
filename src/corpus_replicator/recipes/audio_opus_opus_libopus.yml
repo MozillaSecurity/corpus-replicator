@@ -1,0 +1,47 @@
+base:
+  codec: "opus"
+  container: "opus"
+  library: "libopus"
+  medium: "audio"
+  tool: "ffmpeg"
+  default_flags:
+    encoder:
+      ["-c:a", "libopus"]
+
+variation:
+  application:
+  - ["-application", "lowdelay"]
+  - ["-application", "voip"]
+  vbr:
+  - ["-vbr", "on", "-b:a", "500"]
+  - ["-vbr", "on", "-b:a", "16k"]
+  - ["-vbr", "on", "-b:a", "64k"]
+  - ["-vbr", "on", "-b:a", "128k"]
+  - ["-vbr", "on", "-b:a", "256k"]
+  - ["-vbr", "constrained", "-b:a", "64k"]
+  cbr:
+  - ["-vbr", "off", "-b:a", "16k"]
+  - ["-vbr", "off", "-b:a", "32k"]
+  - ["-vbr", "off", "-b:a", "64k"]
+  channels:
+  - ["-ac", "1"]
+  - ["-ac", "2"]
+  - ["-ac", "6"]
+  compression-level:
+  - ["-compression_level", "0"]
+  - ["-compression_level", "3"]
+  - ["-compression_level", "6"]
+  - ["-compression_level", "10"]
+  frame-duration:
+  - ["-frame_duration", "2.5"]
+  - ["-frame_duration", "5"]
+  - ["-frame_duration", "10"]
+  - ["-frame_duration", "20"]
+  - ["-frame_duration", "40"]
+  - ["-frame_duration", "60"]
+  sample-rate:
+  - ["-ar", "8000"]
+  - ["-ar", "12000"]
+  - ["-ar", "16000"]
+  - ["-ar", "24000"]
+  - ["-ar", "48000"]

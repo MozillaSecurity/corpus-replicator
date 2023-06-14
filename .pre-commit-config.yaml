@@ -1,0 +1,83 @@
+repos:
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+  - repo: https://github.com/asottile/yesqa
+    rev: v1.5.0
+    hooks:
+      - id: yesqa
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.7.0
+    hooks:
+      - id: pyupgrade
+        args: ["--py38-plus"]
+  - repo: https://github.com/ambv/black
+    rev: 23.3.0
+    hooks:
+      - id: black
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-json
+      - id: check-toml
+      - id: check-yaml
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: name-tests-test
+        args: ["--django"]
+      - id: requirements-txt-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.5
+    hooks:
+      - id: codespell
+        exclude_types: [json]
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.23.2
+    hooks:
+      - id: check-jsonschema
+        name: "Check recipe schema"
+        files: ^src/corpus_replicator/recipes/
+        types: [yaml]
+        args: ["--schemafile", "./src/corpus_replicator/recipes/schema.json"]
+  - repo: https://github.com/marco-c/taskcluster_yml_validator
+    rev: v0.0.10
+    hooks:
+      - id: taskcluster_yml
+  - repo: https://github.com/MozillaSecurity/orion
+    rev: v0.0.6
+    hooks:
+      - id: orion_ci
+  - repo: meta
+    hooks:
+      - id: check-useless-excludes
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: tox -e mypy --
+        language: system
+        require_serial: true
+        types: [python]
+      - id: pylint
+        name: pylint
+        entry: tox -e pylint --
+        language: system
+        require_serial: true
+        types: [python]
+
+default_language_version:
+  python: python3

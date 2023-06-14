@@ -1,0 +1,31 @@
+base:
+  codec: "gif"
+  container: "gif"
+  library: "ffmpeg"
+  medium: "image"
+  tool: "ffmpeg"
+  default_flags:
+    resolution:
+      ["-s", "320x240"]
+
+variation:
+  bit-depth:
+  - ["-pix_fmt:v", "monob"]
+  - ["-pix_fmt:v", "gray"]
+  - ["-pix_fmt:v", "rgb4"]
+  - ["-pix_fmt:v", "rgb8"]
+  - ["-pix_fmt:v", "rgb24"]
+  - ["-pix_fmt:v", "rgba"]
+  resolution:
+  - ["-s", "1x1"]
+  - ["-s", "16x16"]
+  - ["-s", "18x32"]
+  - ["-s", "64x64"]
+  - ["-s", "320x180"]
+  - ["-s", "320x240"]
+  - ["-s", "480x320"]
+  - ["-s", "1280x720"]
+  - ["-s", "1920x1080"]
+  - ["-s", "4096x2160"]
+  monochrome:
+  - ["-vf", "monochrome"]

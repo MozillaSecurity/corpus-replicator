@@ -1,0 +1,1 @@
+include src/corpus_replicator/recipes/*.yml

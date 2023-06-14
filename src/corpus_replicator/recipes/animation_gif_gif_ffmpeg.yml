@@ -1,0 +1,14 @@
+base:
+  codec: "gif"
+  container: "gif"
+  library: "ffmpeg"
+  medium: "animation"
+  tool: "ffmpeg"
+  default_flags:
+    resolution:
+      ["-s", "320x240"]
+
+variation:
+  loop:
+  - ["-plays", "0"]
+  - ["-plays", "1"]

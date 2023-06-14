@@ -1,0 +1,20 @@
+base:
+  codec: "aac"
+  container: "mp4"
+  library: "ffmpeg"
+  medium: "audio"
+  tool: "ffmpeg"
+  default_flags:
+    encoder:
+      ["-c:a", "aac"]
+
+variation:
+  vbr:
+  - ["-vbr", "1"]
+  - ["-vbr", "3"]
+  - ["-vbr", "5"]
+  cbr:
+  - ["-b:a", "64k"]
+  channels:
+  - ["-ac", "1"]
+  - ["-ac", "2"]

@@ -1,0 +1,28 @@
+base:
+  codec: "vorbis"
+  container: "ogg"
+  library: "libvorbis"
+  medium: "audio"
+  tool: "ffmpeg"
+  default_flags:
+    encoder:
+      ["-c:a", "libvorbis"]
+
+variation:
+  vbr:
+  - ["-q:a", "0"]
+  - ["-q:a", "5"]
+  - ["-q:a", "9"]
+  channels:
+  - ["-ac", "1"]
+  - ["-ac", "2"]
+  sample-rate:
+  - ["-ar", "8000"]
+  - ["-ar", "11025"]
+  - ["-ar", "12000"]
+  - ["-ar", "16000"]
+  - ["-ar", "22050"]
+  - ["-ar", "24000"]
+  - ["-ar", "32000"]
+  - ["-ar", "44100"]
+  - ["-ar", "48000"]
