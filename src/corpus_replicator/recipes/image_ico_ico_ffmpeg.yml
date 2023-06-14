@@ -1,0 +1,23 @@
+base:
+  codec: "ico"
+  container: "ico"
+  library: "ffmpeg"
+  medium: "image"
+  tool: "ffmpeg"
+  default_flags:
+    resolution:
+      ["-s", "32x32"]
+
+variation:
+  bit-depth:
+  - ["-pix_fmt:v", "pal8"]
+  - ["-pix_fmt:v", "rgb24"]
+  - ["-pix_fmt:v", "rgba"]
+  resolution:
+  - ["-s", "1x1"]
+  - ["-s", "16x16"]
+  - ["-s", "18x32"]
+  - ["-s", "64x64"]
+  - ["-s", "256x256"]
+  monochrome:
+  - ["-vf", "monochrome"]

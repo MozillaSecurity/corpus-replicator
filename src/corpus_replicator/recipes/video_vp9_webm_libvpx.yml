@@ -1,0 +1,33 @@
+base:
+  codec: "vp9"
+  container: "webm"
+  library: "libvpx-vp9"
+  medium: "video"
+  tool: "ffmpeg"
+  default_flags:
+    encoder:
+      ["-c:v", "libvpx-vp9"]
+    disable-audio:
+      ["-an"]
+    frames:
+      ["-frames", "20"]
+    resolution:
+      ["-s", "320x240"]
+
+variation:
+  resolution:
+  - ["-s", "18x32"]
+  - ["-s", "32x18"]
+  - ["-s", "64x64"]
+  - ["-s", "320x180"]
+  - ["-s", "320x200"]
+  - ["-s", "480x320"]
+  - ["-s", "1280x720"]
+  - ["-s", "1920x1080"]
+  - ["-s", "4096x2160"]
+  deadline:
+  - ["-deadline", "best"]
+  - ["-deadline", "good"]
+  - ["-deadline", "realtime"]
+  monochrome:
+  - ["-vf", "monochrome"]

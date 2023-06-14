@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "corpus-replicator recipe schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "base": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "codec": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9-]+$"
+        },
+        "container": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9-]+$"
+        },
+        "library": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9-]+$"
+        },
+        "medium": {
+          "type": "string",
+          "pattern": "animation|audio|image|video"
+        },
+        "tool": {
+          "type": "string",
+          "pattern": "ffmpeg"
+        },
+        "default_flags": {
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-zA-Z0-9-]+$": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "pattern": "^\\S+$"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "codec",
+        "container",
+        "library",
+        "medium",
+        "tool",
+        "default_flags"
+      ]
+    },
+    "variation": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "patternProperties": {
+        "^[a-zA-Z0-9-]+$": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^\\S+$"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "base",
+    "variation"
+  ]
+}

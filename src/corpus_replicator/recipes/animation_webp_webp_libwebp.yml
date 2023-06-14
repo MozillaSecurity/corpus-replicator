@@ -1,0 +1,14 @@
+base:
+  codec: "webp"
+  container: "webp"
+  library: "libwebp"
+  medium: "animation"
+  tool: "ffmpeg"
+  default_flags:
+    resolution:
+      ["-s", "320x240"]
+
+variation:
+  loop:
+  - ["-loop", "0"]
+  - ["-loop", "1"]

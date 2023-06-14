@@ -1,0 +1,45 @@
+base:
+  codec: "mp3"
+  container: "mp3"
+  library: "libmp3lame"
+  medium: "audio"
+  tool: "ffmpeg"
+  default_flags:
+    encoder:
+      ["-c:a", "libmp3lame"]
+
+variation:
+  abr:
+  - ["-abr", "1"]
+  vbr:
+  - ["-q:a", "0"]
+  - ["-q:a", "5"]
+  - ["-q:a", "9"]
+  cbr:
+  - ["-b:a", "32k"]
+  - ["-b:a", "64k"]
+  channels:
+  # mono
+  - ["-ac", "1"]
+  # disable joint stereo
+  - ["-ac", "2", "-joint_stereo", "0"]
+  # with joint stereo
+  - ["-ac", "2", "-joint_stereo", "1"]
+  id3:
+  - ["-write_id3v2", "0"]
+  - ["-write_id3v2", "1", "-id3v2_version", "3"]
+  - ["-write_id3v2", "1", "-id3v2_version", "4"]
+  metadata:
+  - ["-metadata", "artist='Someone'"]
+  # strip meta data
+  - ["-flags:a", "+bitexact"]
+  sample-rate:
+  - ["-ar", "8000"]
+  - ["-ar", "11025"]
+  - ["-ar", "12000"]
+  - ["-ar", "16000"]
+  - ["-ar", "22050"]
+  - ["-ar", "24000"]
+  - ["-ar", "32000"]
+  - ["-ar", "44100"]
+  - ["-ar", "48000"]

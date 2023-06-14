@@ -1,0 +1,16 @@
+base:
+  codec: "apng"
+  container: "png"
+  library: "ffmpeg"
+  medium: "animation"
+  tool: "ffmpeg"
+  default_flags:
+    encoder:
+      ["-f", "apng"]
+    resolution:
+      ["-s", "320x240"]
+
+variation:
+  loop:
+  - ["-plays", "0"]
+  - ["-plays", "1"]

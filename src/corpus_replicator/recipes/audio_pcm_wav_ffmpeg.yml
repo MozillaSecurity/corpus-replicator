@@ -1,0 +1,28 @@
+base:
+  codec: "pcm"
+  container: "wav"
+  library: "ffmpeg"
+  medium: "audio"
+  tool: "ffmpeg"
+  default_flags:
+    encoder:
+      ["-c:a", "pcm_s16le"]
+
+variation:
+  encoder:
+  - ["-c:a", "pcm_u8", "-ar", "1600"]
+  - ["-c:a", "pcm_s24le"]
+  - ["-c:a", "pcm_s32le"]
+  channels:
+  - ["-ac", "1"]
+  - ["-ac", "2"]
+  sample-rate:
+  - ["-ar", "8000"]
+  - ["-ar", "11025"]
+  - ["-ar", "12000"]
+  - ["-ar", "16000"]
+  - ["-ar", "22050"]
+  - ["-ar", "24000"]
+  - ["-ar", "32000"]
+  - ["-ar", "44100"]
+  - ["-ar", "48000"]

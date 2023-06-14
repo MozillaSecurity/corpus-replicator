@@ -1,0 +1,32 @@
+base:
+  codec: "flac"
+  container: "flac"
+  library: "ffmpeg"
+  medium: "audio"
+  tool: "ffmpeg"
+  default_flags: {}
+
+variation:
+  bit-depth:
+  - ["-sample_fmt", "s32"]
+  channels:
+  - ["-ac", "1"]
+  - ["-ac", "2"]
+  compression:
+  - ["-compression_level", "0"]
+  - ["-compression_level", "3"]
+  - ["-compression_level", "6"]
+  - ["-compression_level", "9"]
+  - ["-compression_level", "12"]
+  metadata:
+  - ["-write_id3v2", "1", "-metadata", "artist=foo"]
+  sample-rate:
+  - ["-ar", "8000"]
+  - ["-ar", "11025"]
+  - ["-ar", "12000"]
+  - ["-ar", "16000"]
+  - ["-ar", "22050"]
+  - ["-ar", "24000"]
+  - ["-ar", "32000"]
+  - ["-ar", "44100"]
+  - ["-ar", "48000"]

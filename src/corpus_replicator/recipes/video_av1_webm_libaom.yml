@@ -1,0 +1,35 @@
+base:
+  codec: "av1"
+  container: "webm"
+  library: "libaom"
+  medium: "video"
+  tool: "ffmpeg"
+  default_flags:
+    encoder:
+      ["-c:v", "libaom-av1"]
+    disable-audio:
+      ["-an"]
+    frames:
+      ["-frames", "20"]
+    resolution:
+      ["-s", "320x240"]
+    multi-thread:
+      ["-cpu-used", "2", "-row-mt", "1"]
+
+variation:
+  resolution:
+  - ["-s", "18x32"]
+  - ["-s", "32x18"]
+  - ["-s", "64x64"]
+  - ["-s", "320x180"]
+  - ["-s", "320x200"]
+  - ["-s", "480x320"]
+  - ["-s", "1280x720"]
+  - ["-s", "1920x1080"]
+  - ["-s", "4096x2160"]
+  quality:
+  - ["-crf", "20"]
+  - ["-crf", "30"]
+  - ["-crf", "63"]
+  monochrome:
+  - ["-vf", "monochrome"]

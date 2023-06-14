@@ -1,0 +1,21 @@
+base:
+  codec: "mp3"
+  container: "mp3"
+  library: "libshine"
+  medium: "audio"
+  tool: "ffmpeg"
+  default_flags:
+    encoder:
+      ["-c:a", "libshine"]
+
+variation:
+  cbr:
+  - ["-b:a", "32k"]
+  - ["-b:a", "64k"]
+  channels:
+  - ["-ac", "1"]
+  - ["-ac", "2"]
+  sample-rate:
+  - ["-ar", "32000"]
+  - ["-ar", "44100"]
+  - ["-ar", "48000"]
