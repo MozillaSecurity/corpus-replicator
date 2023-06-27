@@ -69,6 +69,24 @@ tasks:
             version: "3.11"
             env:
               TOXENV: py311,lint
+          - name: PyPI upload
+            version: "3.8"
+            env:
+              TOXENV: pypi
+            script:
+              - tox
+            when:
+              release: true
+              all_passed: true
+            secrets:
+              - type: env
+                secret: project/fuzzing/pypi-corpus-replicator
+                name: TWINE_USERNAME
+                key: username
+              - type: env
+                secret: project/fuzzing/pypi-corpus-replicator
+                name: TWINE_PASSWORD
+                key: password
 
   in:
     $if: 'tasks_for in ["github-push", "github-release"] || (tasks_for == "github-pull-request" && event["action"] in ["opened", "reopened", "synchronize"])'
