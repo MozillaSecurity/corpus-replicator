@@ -50,6 +50,7 @@ variation:
 def test_replicator_01(mocker, tmp_path, mode, recipes, templates, expected):
     """test Replicator()"""
     mocker.patch("corpus_replicator.common.run", autospec=True)
+    mocker.patch("corpus_replicator.generate_corpus.ffmpeg_available", autospec=True)
     # create test template files
     recipe_path = tmp_path / "recipes"
     recipe_path.mkdir()
@@ -96,6 +97,7 @@ def test_replicator_02(tmp_path, file_data, final_count):
 )
 def test_main_01(mocker, tmp_path, medium):
     """test main()"""
+    mocker.patch("corpus_replicator.core.ffmpeg_available", autospec=True)
     replicator = mocker.patch("corpus_replicator.core.Replicator", autospec=True)
     empty = tmp_path / "empty"
     empty.touch()
@@ -109,6 +111,7 @@ def test_main_01(mocker, tmp_path, medium):
 
 def test_main_02(mocker, tmp_path):
     """test main()"""
+    mocker.patch("corpus_replicator.core.ffmpeg_available", autospec=True)
     replicator = mocker.patch("corpus_replicator.core.Replicator", autospec=True)
     replicator.side_effect = RecipeError("foo")
     empty = tmp_path / "empty"
