@@ -6,13 +6,14 @@ from logging import DEBUG, INFO, getLogger
 from pathlib import Path
 from typing import List, Optional
 
-from .common import Recipe, Template, ToolError, init_logging
+from .common import CorpusGenerator, Recipe, Template, ToolError, init_logging
 from .tools.ffmpeg import FFmpegGenerator, ffmpeg_available
+from .tools.imagemagick import ImageMagickGenerator, imagemagick_available
 
 LOG = getLogger(__name__)
 
 
-def load_generator(recipe: Recipe, dest: Path) -> FFmpegGenerator:
+def load_generator(recipe: Recipe, dest: Path) -> CorpusGenerator:
     """Load a specific generator to use to create the corpus.
 
     Args:
@@ -22,11 +23,15 @@ def load_generator(recipe: Recipe, dest: Path) -> FFmpegGenerator:
     Returns:
         A corpus generator.
     """
-    generator: Optional[FFmpegGenerator] = None
+    generator: Optional[CorpusGenerator] = None
     if recipe.tool == "ffmpeg":
         if not ffmpeg_available():
             raise ToolError("FFmpeg is not available")
         generator = FFmpegGenerator(recipe, dest)
+    elif recipe.tool == "imagemagick":
+        if not imagemagick_available():
+            raise ToolError("ImageMagick is not available")
+        generator = ImageMagickGenerator(recipe, dest)
     else:
         raise ToolError(f"Unsupported tool {recipe.tool!r}")
     assert generator is not None
