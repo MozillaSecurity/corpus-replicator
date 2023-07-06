@@ -12,7 +12,7 @@ from yaml import YAMLError, safe_load
 
 LOG = getLogger(__name__)
 SUPPORTED_MEDIUM = ("animation", "audio", "image", "video")
-SUPPORTED_TOOLS = ("ffmpeg",)
+SUPPORTED_TOOLS = ("ffmpeg", "imagemagick")
 TOOL_LOG: str = "replicator-tool-log.txt"
 
 

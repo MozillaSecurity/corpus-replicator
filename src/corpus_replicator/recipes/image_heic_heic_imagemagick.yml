@@ -1,0 +1,22 @@
+base:
+  codec: "heic"
+  container: "heic"
+  library: "imagemagick"
+  medium: "image"
+  tool: "imagemagick"
+  default_flags:
+    resolution:
+      ["-resize", "320x240"]
+
+variation:
+  resolution:
+  - ["-resize", "1x1"]
+  - ["-resize", "16x16"]
+  - ["-resize", "18x32"]
+  - ["-resize", "64x64"]
+  - ["-resize", "320x180"]
+  - ["-resize", "320x240"]
+  - ["-resize", "480x320"]
+  - ["-resize", "1280x720"]
+  monochrome:
+  - ["-monochrome"]

@@ -7,11 +7,11 @@ from typing import Iterator
 
 from ..common import CorpusGenerator, run_tool
 
-FFMPEG_BIN = "ffmpeg"
+IMAGEMAGICK_BIN = "convert"
 
 
-class FFmpegGenerator(CorpusGenerator):
-    """FFmpeg wrapper."""
+class ImageMagickGenerator(CorpusGenerator):
+    """ImageMagick wrapper."""
 
     def generate(self) -> Iterator[Path]:
         """Generate corpus. Templates are combined with Recipes to create variations
@@ -25,9 +25,9 @@ class FFmpegGenerator(CorpusGenerator):
             A corpus generator.
         """
         for template in self._templates:
-            base_cmd = [FFMPEG_BIN, "-i", str(template.file), "-y"]
+            base_cmd = [IMAGEMAGICK_BIN, str(template.file)]
             for flag, idx, variation in self._recipe:
-                # build dest file name 'video-h264-library-noise-resolution-##.mp4'
+                # build dest file name 'img-jpeg-library-noise-resolution-##.mp4'
                 dest_file = self._dest / "-".join(
                     [
                         self._recipe.medium,
@@ -42,14 +42,14 @@ class FFmpegGenerator(CorpusGenerator):
                 yield dest_file
 
 
-def ffmpeg_available() -> bool:
-    """Check if FFmpeg is installed.
+def imagemagick_available() -> bool:
+    """Check if ImageMagick is installed.
 
     Args:
         None
 
     Return:
-        True if tool is installed otherwise False.
+        True if installed otherwise False.
     """
     # TODO: check version and flags for available features?
-    return which(FFMPEG_BIN) is not None
+    return which(IMAGEMAGICK_BIN) is not None

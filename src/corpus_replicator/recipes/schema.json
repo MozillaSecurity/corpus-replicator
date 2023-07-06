@@ -26,7 +26,7 @@
         },
         "tool": {
           "type": "string",
-          "pattern": "ffmpeg"
+          "pattern": "ffmpeg|imagemagick"
         },
         "default_flags": {
           "type": "object",
