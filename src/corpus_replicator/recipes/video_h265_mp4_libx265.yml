@@ -1,0 +1,35 @@
+base:
+  codec: "h265"
+  container: "mp4"
+  library: "libx265"
+  medium: "video"
+  tool: "ffmpeg"
+  default_flags:
+    encoder:
+      ["-c:v", "libx265"]
+    disable-audio:
+      ["-an"]
+    frames:
+      ["-frames", "20"]
+    resolution:
+      ["-s", "240x180"]
+
+variation:
+  resolution:
+  - ["-s", "18x32"]
+  - ["-s", "32x18"]
+  - ["-s", "48x48"]
+  - ["-s", "180x240"]
+  - ["-s", "320x180"]
+  - ["-s", "1280x720"]
+  preset:
+  - ["-preset", "ultrafast"]
+  profile:
+  - ["-profile:v", "main"]
+  - ["-profile:v", "main10"]
+  tune:
+  - ["-tune", "fastdecode"]
+  - ["-tune", "grain"]
+  - ["-tune", "psnr"]
+  - ["-tune", "ssim"]
+  - ["-tune", "zerolatency"]
