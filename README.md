@@ -54,7 +54,7 @@ variation:
   - ["-s", "32x18"]
   - ["-s", "64x64"]
   monochrome:         # flag group - adds new flag group
-  - ["-vf", "monochrome"]
+  - ["-vf", "hue=s=0"]
 ```
 
 Running the recipe will generate a corpus:

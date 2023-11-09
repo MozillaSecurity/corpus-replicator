@@ -30,4 +30,4 @@ variation:
   - ["-qscale:v", "25"]
   - ["-qscale:v", "31"]
   monochrome:
-  - ["-vf", "monochrome"]
+  - ["-vf", "hue=s=0"]

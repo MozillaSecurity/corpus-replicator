@@ -30,4 +30,4 @@ variation:
   - ["-tune", "film"]
   - ["-tune", "zerolatency"]
   monochrome:
-  - ["-vf", "monochrome"]
+  - ["-vf", "hue=s=0"]

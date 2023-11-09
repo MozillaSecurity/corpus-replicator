@@ -20,4 +20,4 @@ variation:
   - ["-s", "64x64"]
   - ["-s", "256x256"]
   monochrome:
-  - ["-vf", "monochrome"]
+  - ["-vf", "hue=s=0"]
