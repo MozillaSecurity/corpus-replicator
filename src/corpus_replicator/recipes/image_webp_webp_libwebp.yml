@@ -41,4 +41,4 @@ variation:
   - ["-preset", "icon"]
   - ["-preset", "text"]
   monochrome:
-  - ["-vf", "monochrome"]
+  - ["-vf", "hue=s=0"]

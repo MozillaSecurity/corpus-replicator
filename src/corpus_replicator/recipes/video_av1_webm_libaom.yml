@@ -32,4 +32,4 @@ variation:
   - ["-crf", "30"]
   - ["-crf", "63"]
   monochrome:
-  - ["-vf", "monochrome"]
+  - ["-vf", "hue=s=0"]

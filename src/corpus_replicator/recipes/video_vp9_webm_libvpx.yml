@@ -30,4 +30,4 @@ variation:
   - ["-deadline", "good"]
   - ["-deadline", "realtime"]
   monochrome:
-  - ["-vf", "monochrome"]
+  - ["-vf", "hue=s=0"]

@@ -35,4 +35,4 @@ variation:
   - ["-s", "2560x1080"]
   - ["-s", "4096x2160"]
   monochrome:
-  - ["-vf", "monochrome"]
+  - ["-vf", "hue=s=0"]
