@@ -1,0 +1,33 @@
+base:
+  codec: "h264"
+  container: "264"
+  library: "libx264"
+  medium: "video"
+  tool: "ffmpeg"
+  default_flags:
+    encoder:
+      ["-c:v", "libx264"]
+    disable-audio:
+      ["-an"]
+    frames:
+      ["-frames", "20"]
+    resolution:
+      ["-s", "64x64"]
+
+variation:
+  resolution:
+  - ["-s", "18x32"]
+  - ["-s", "32x18"]
+  - ["-s", "160x90"]
+  - ["-s", "320x240"]
+  profile:
+  - ["-profile:v", "baseline"]
+  - ["-profile:v", "high"]
+  - ["-profile:v", "main"]
+  tune:
+  - ["-tune", "animation"]
+  - ["-tune", "fastdecode"]
+  - ["-tune", "film"]
+  - ["-tune", "zerolatency"]
+  monochrome:
+  - ["-vf", "monochrome"]
