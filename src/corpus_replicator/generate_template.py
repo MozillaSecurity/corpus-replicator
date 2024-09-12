@@ -147,6 +147,10 @@ def main(argv: list[str] | None = None) -> None:
             frames=args.frames,
             resolution=args.resolution,
         )
+    else:  # pragma: no cover
+        # this should be handle by parse_args()
+        raise ValueError(f"Unknown medium '{args.medium}'")
+
     LOG.info("Created '%s'", output.file)
 
 
@@ -200,5 +204,5 @@ def parse_args(argv: list[str] | None = None) -> Namespace:
     return args
 
 
-if __name__ == "__main__":  # pragma: no cover
+if __name__ == "__main__":
     main()

@@ -118,6 +118,8 @@ class Replicator:
                     frames=frames,
                     resolution=resolution,
                 )
+            else:
+                raise ValueError(f"Unknown medium '{self.medium}'")
             self.templates.append(generated)
         LOG.debug(
             "generated template(s): %s", ", ".join(str(x.file) for x in self.templates)
