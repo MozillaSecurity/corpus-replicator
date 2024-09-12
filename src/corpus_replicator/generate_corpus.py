@@ -1,10 +1,11 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+from __future__ import annotations
+
 from argparse import ArgumentParser, Namespace
 from logging import DEBUG, INFO, getLogger
 from pathlib import Path
-from typing import List, Optional
 
 from .common import CorpusGenerator, Recipe, Template, ToolError, init_logging
 from .tools.ffmpeg import FFmpegGenerator, ffmpeg_available
@@ -23,7 +24,7 @@ def load_generator(recipe: Recipe, dest: Path) -> CorpusGenerator:
     Returns:
         A corpus generator.
     """
-    generator: Optional[CorpusGenerator] = None
+    generator: CorpusGenerator | None = None
     if recipe.tool == "ffmpeg":
         if not ffmpeg_available():
             raise ToolError("FFmpeg is not available")
@@ -38,7 +39,7 @@ def load_generator(recipe: Recipe, dest: Path) -> CorpusGenerator:
     return generator
 
 
-def main(argv: Optional[List[str]] = None) -> None:
+def main(argv: list[str] | None = None) -> None:
     """Main function"""
     args = parse_args(argv)
     init_logging(args.log_level)
@@ -49,7 +50,7 @@ def main(argv: Optional[List[str]] = None) -> None:
     generator.generate()
 
 
-def parse_args(argv: Optional[List[str]] = None) -> Namespace:
+def parse_args(argv: list[str] | None = None) -> Namespace:
     """Argument parsing"""
     parser = ArgumentParser(
         description="Generate a corpus from a recipe and template file."

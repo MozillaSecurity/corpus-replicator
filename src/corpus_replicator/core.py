@@ -1,13 +1,15 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+from __future__ import annotations
+
 from argparse import ArgumentParser, Namespace
 from filecmp import cmp
 from importlib.metadata import PackageNotFoundError, version
 from itertools import product
 from logging import DEBUG, INFO, getLogger
 from pathlib import Path
-from typing import Iterable, List, Optional
+from typing import Iterable
 
 from .common import (
     SUPPORTED_MEDIUM,
@@ -41,8 +43,8 @@ class Replicator:
         assert medium in SUPPORTED_MEDIUM
         self.dest = dest
         self.medium = medium
-        self.recipes: List[Recipe] = []
-        self.templates: List[Template] = []
+        self.recipes: list[Recipe] = []
+        self.templates: list[Template] = []
 
         # load recipe files
         for recipe_file in set(recipes):
@@ -153,7 +155,7 @@ class Replicator:
             template.unlink()
 
 
-def parse_args(argv: Optional[List[str]] = None) -> Namespace:
+def parse_args(argv: list[str] | None = None) -> Namespace:
     """Argument parsing"""
     parser = ArgumentParser(description="Generate a corpus.", prog="corpus-replicator")
     recipes = {x.name: x for x in list_recipes()}
@@ -306,7 +308,7 @@ def parse_args(argv: Optional[List[str]] = None) -> Namespace:
     return args
 
 
-def main(argv: Optional[List[str]] = None) -> None:
+def main(argv: list[str] | None = None) -> None:
     """Main function"""
     args = parse_args(argv)
     init_logging(args.log_level)

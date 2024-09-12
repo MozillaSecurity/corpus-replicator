@@ -1,12 +1,14 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from logging import DEBUG, basicConfig, getLogger
 from pathlib import Path
 from re import match
 from subprocess import run
-from typing import Any, Dict, Iterator, List, Tuple
+from typing import Any, Iterator
 
 from yaml import YAMLError, safe_load
 
@@ -42,13 +44,13 @@ class Recipe:
         LOG.debug("loading recipe '%s'", file)
         # load data from yml file
         try:
-            data: Dict[str, Any] = safe_load(file.read_text()) or {}
+            data: dict[str, Any] = safe_load(file.read_text()) or {}
         except (UnicodeDecodeError, YAMLError):
             raise RecipeError("Invalid YAML file") from None
 
         try:
-            self._flags: Dict[str, Any] = data["base"]["default_flags"] or {}
-            self._variations: Dict[str, Any] = data["variation"] or {}
+            self._flags: dict[str, Any] = data["base"]["default_flags"] or {}
+            self._variations: dict[str, Any] = data["variation"] or {}
             # codec
             self.codec: str = data["base"]["codec"]
             # container type
@@ -108,7 +110,7 @@ class Recipe:
         if self.tool not in SUPPORTED_TOOLS:
             raise RecipeError(f"Recipe tool '{self.tool}' unsupported")
 
-    def __iter__(self) -> Iterator[Tuple[str, int, List[str]]]:
+    def __iter__(self) -> Iterator[tuple[str, int, list[str]]]:
         for flag_group, variations in self._variations.items():
             # add default flags
             base_flags = []
@@ -155,7 +157,7 @@ class CorpusGenerator(ABC):
     def __init__(self, recipe: Recipe, dest: Path) -> None:
         self._dest = dest
         self._recipe = recipe
-        self._templates: List[Template] = []
+        self._templates: list[Template] = []
 
     def add_template(self, template: Template) -> None:
         """Add a Template to the Generator.
@@ -244,7 +246,7 @@ def list_recipes() -> Iterator[Path]:
                 yield recipe
 
 
-def run_tool(cmd: List[str]) -> None:
+def run_tool(cmd: list[str]) -> None:
     """Wrapper for subprocess.run.
 
     Arguments:

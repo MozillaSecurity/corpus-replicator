@@ -1,10 +1,11 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+from __future__ import annotations
+
 from argparse import ArgumentParser, Namespace
 from logging import DEBUG, INFO, getLogger
 from pathlib import Path
-from typing import List, Optional
 
 from .common import Template, init_logging, is_resolution, run_tool
 from .tools.ffmpeg import FFMPEG_BIN, ffmpeg_available
@@ -128,7 +129,7 @@ def generate_video(
     return Template(template, dst)
 
 
-def main(argv: Optional[List[str]] = None) -> None:
+def main(argv: list[str] | None = None) -> None:
     """Main function"""
     args = parse_args(argv)
     init_logging(args.log_level)
@@ -149,7 +150,7 @@ def main(argv: Optional[List[str]] = None) -> None:
     LOG.info("Created '%s'", output.file)
 
 
-def parse_args(argv: Optional[List[str]] = None) -> Namespace:
+def parse_args(argv: list[str] | None = None) -> Namespace:
     """Argument parsing"""
     parser = ArgumentParser(description="Generate a template file.")
     # common args
