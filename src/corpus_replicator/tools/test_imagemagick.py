@@ -47,7 +47,7 @@ def test_imagemagick_generator_01(mocker, tmp_path):
     generator.add_template(Template("template01", template_file))
     generator.add_template(Template("template02", template_file))
 
-    corpus = list(x.name for x in generator.generate())
+    corpus = [x.name for x in generator.generate()]
     assert len(corpus) == 4
     assert "image-jpeg-imagemagick-template01-param-00.jpg" in corpus
     assert "image-jpeg-imagemagick-template01-param-01.jpg" in corpus

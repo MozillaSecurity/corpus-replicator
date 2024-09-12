@@ -211,7 +211,7 @@ def parse_args(argv: list[str] | None = None) -> Namespace:
         "-t",
         "--templates",
         default=["all"],
-        choices=["all"] + list(TEMPLATES["video"]),
+        choices=["all", *list(TEMPLATES["video"])],
         nargs="+",
         help="Template to use (default: all).",
     )
@@ -229,7 +229,7 @@ def parse_args(argv: list[str] | None = None) -> Namespace:
         "-t",
         "--templates",
         default=["all"],
-        choices=["all"] + list(TEMPLATES["audio"]),
+        choices=["all", *list(TEMPLATES["audio"])],
         nargs="+",
         help="Template to use (default: all).",
     )
@@ -246,7 +246,7 @@ def parse_args(argv: list[str] | None = None) -> Namespace:
         "-t",
         "--templates",
         default=["all"],
-        choices=["all"] + list(TEMPLATES["image"]),
+        choices=["all", *list(TEMPLATES["image"])],
         nargs="+",
         help="Template to use (default: all).",
     )
@@ -276,7 +276,7 @@ def parse_args(argv: list[str] | None = None) -> Namespace:
         "-t",
         "--templates",
         default=["all"],
-        choices=["all"] + list(TEMPLATES["video"]),
+        choices=["all", *list(TEMPLATES["video"])],
         nargs="+",
         help="Template to use (default: all).",
     )
