@@ -184,13 +184,9 @@ class CorpusGenerator(ABC):
         Returns:
             Descriptive string.
         """
-        return "/".join(
-            [
-                self._recipe.medium,
-                self._recipe.library,
-                self._recipe.codec,
-                self._recipe.container,
-            ]
+        return (
+            f"{self._recipe.medium}/{self._recipe.library}/"
+            f"{self._recipe.codec}/{self._recipe.container}"
         )
 
 

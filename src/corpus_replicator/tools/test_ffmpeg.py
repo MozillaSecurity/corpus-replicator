@@ -47,7 +47,7 @@ def test_ffmpeg_generator_01(mocker, tmp_path):
     generator.add_template(Template("template01", template_file))
     generator.add_template(Template("template02", template_file))
 
-    corpus = list(x.name for x in generator.generate())
+    corpus = [x.name for x in generator.generate()]
     assert len(corpus) == 4
     assert "video-h264-libx264-template01-param-00.mp4" in corpus
     assert "video-h264-libx264-template01-param-01.mp4" in corpus

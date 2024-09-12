@@ -47,4 +47,27 @@ ignored-modules = ["pytest"]
 [tool.pytest.ini_options]
 log_level = "DEBUG"
 
+[tool.ruff.lint]
+select = [
+    # flake8-comprehensions
+    "C4",
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # Flynt
+    "FLY",
+    # Perflint
+    "PERF",
+    # flake8-simplify
+    "SIM",
+    # flake8-type-checking
+    "TCH",
+    # Ruff-specific rules
+    "RUF",
+    # pycodestyle
+    "W",
+]
+ignore = ["SIM117"]
+
 [tool.setuptools_scm]
