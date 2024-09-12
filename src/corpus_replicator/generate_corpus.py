@@ -88,5 +88,5 @@ def parse_args(argv: list[str] | None = None) -> Namespace:
     return args
 
 
-if __name__ == "__main__":  # pragma: no cover
+if __name__ == "__main__":
     main()
