@@ -1,9 +1,9 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+from collections.abc import Iterator
 from pathlib import Path
 from shutil import which
-from typing import Iterator
 
 from ..common import CorpusGenerator, run_tool
 

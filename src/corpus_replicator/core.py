@@ -9,7 +9,7 @@ from importlib.metadata import PackageNotFoundError, version
 from itertools import product
 from logging import DEBUG, INFO, getLogger
 from pathlib import Path
-from typing import Iterable
+from typing import TYPE_CHECKING
 
 from .common import (
     SUPPORTED_MEDIUM,
@@ -24,6 +24,9 @@ from .common import (
 from .generate_corpus import load_generator
 from .generate_template import TEMPLATES, generate_audio, generate_image, generate_video
 from .tools.ffmpeg import ffmpeg_available
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
 
 try:
     __version__ = version("corpus-replicator")

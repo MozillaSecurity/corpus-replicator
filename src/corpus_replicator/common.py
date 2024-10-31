@@ -8,9 +8,12 @@ from logging import DEBUG, basicConfig, getLogger
 from pathlib import Path
 from re import match
 from subprocess import run
-from typing import Any, Iterator
+from typing import TYPE_CHECKING, Any
 
 from yaml import YAMLError, safe_load
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 LOG = getLogger(__name__)
 SUPPORTED_MEDIUM = ("animation", "audio", "image", "video")
