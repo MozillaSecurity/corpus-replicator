@@ -35,6 +35,7 @@ disable = [
     "missing-module-docstring",
     "too-few-public-methods",
     "too-many-arguments",
+    "too-many-positional-arguments",
 ]
 
 [tool.pylint.typecheck]
