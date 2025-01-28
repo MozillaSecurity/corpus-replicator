@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from contextlib import suppress
 from logging import DEBUG, basicConfig, getLogger
 from pathlib import Path
 from re import match
@@ -220,12 +221,10 @@ def is_resolution(in_res: str) -> bool:
     Returns:
         True is provided string is a valid resolution otherwise False.
     """
-    try:
+    with suppress(ValueError):
         x_res, y_res = in_res.lower().split("x")
         if int(x_res) > 0 and int(y_res) > 0:
             return True
-    except ValueError:
-        pass
     return False
 
 
