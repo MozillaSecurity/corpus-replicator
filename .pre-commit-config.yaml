@@ -38,14 +38,6 @@ repos:
         files: ^src/corpus_replicator/recipes/
         types: [yaml]
         args: ["--schemafile", "./src/corpus_replicator/recipes/schema.json"]
-  - repo: https://github.com/marco-c/taskcluster_yml_validator
-    rev: v0.0.12
-    hooks:
-      - id: taskcluster_yml
-  - repo: https://github.com/MozillaSecurity/orion-ci
-    rev: v0.0.10
-    hooks:
-      - id: orion_ci
   - repo: meta
     hooks:
       - id: check-useless-excludes

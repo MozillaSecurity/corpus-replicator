@@ -1,6 +1,7 @@
 Corpus Replicator
 =================
-[![Task Status](https://community-tc.services.mozilla.com/api/github/v1/repository/MozillaSecurity/corpus-replicator/main/badge.svg)](https://community-tc.services.mozilla.com/api/github/v1/repository/MozillaSecurity/corpus-replicator/main/latest)
+[![CI](https://github.com/MozillaSecurity/corpus-replicator/actions/workflows/ci.yml/badge.svg)](https://github.com/MozillaSecurity/corpus-replicator/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/MozillaSecurity/corpus-replicator/branch/main/graph/badge.svg)](https://codecov.io/gh/MozillaSecurity/corpus-replicator)
 [![Matrix](https://img.shields.io/badge/chat-%23fuzzing-green?logo=matrix)](https://matrix.to/#/#fuzzing:mozilla.org)
 [![PyPI](https://img.shields.io/pypi/v/corpus-replicator)](https://pypi.org/project/corpus-replicator)
 
